@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="bg_app">#FFF5F6FB</color>
-    <!-- 沿用 minimgur 工具列的 indigo -->
+    <!-- App 主色 indigo，和 ui/Theme.kt 的 Indigo 一致 -->
     <color name="ic_launcher_background">#FF3F51B5</color>
 </resources>

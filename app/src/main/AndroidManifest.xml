@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- 權限只要 INTERNET。拍照交給系統相機，不宣告 CAMERA：宣告了卻沒取得授權，呼叫系統相機會丟 SecurityException。
+         WorkManager 的 manifest 會再合併進 ACCESS_NETWORK_STATE、WAKE_LOCK 等不需要使用者授權的權限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- 匿名上傳的圖只能靠 deletehash 刪除，所以 allowBackup 開著，換手機後上傳紀錄還在。
          Client-ID 也一起備份，所以不要用 Keystore 加密（新手機上解不開） -->
     <application
+        android:name=".ImgurShareApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -18,7 +23,28 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
         </activity>
+
+        <!-- 拍照時給系統相機寫入暫存檔 -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

@@ -3,21 +3,42 @@
 把圖片匿名上傳到 imgur、拿回連結的 Android App。Kotlin + Jetpack Compose 原生 App，在 claude.ai/code 雲端 session 開發。
 雲端 VM 沒有模擬器，模擬器操作與錄影交給 GitHub Actions（`.github/workflows/android-record.yml`）。
 
-功能以 [minimgur](https://github.com/arthow4n/minimgur)（React Native，已停止維護）為規格重寫，不沿用它的程式碼。
+## 功能
 
-## 要做的功能
-
-目前只有骨架，下面是規劃，做完一項就把它改成現況描述。
-
-- **從其他 App 分享進來上傳**：`ACTION_SEND` / `ACTION_SEND_MULTIPLE`，`image/*`
+- **從其他 App 分享進來上傳**：`MainActivity` 收 `ACTION_SEND` / `ACTION_SEND_MULTIPLE`（`image/*`），只收 `content://`
+  （`file://` 可能被惡意 App 拿來指向這個 App 自己的私有檔案）
 - **從相簿多選**：Photo Picker（`ActivityResultContracts.PickMultipleVisualMedia`），不需要任何儲存權限。
   沒有 Photo Picker 的裝置會自動退回系統的檔案選擇器（CI 用的 AOSP 模擬器就是這樣）
-- **拍照上傳**：`ActivityResultContracts.TakePicture` + `FileProvider`。
+- **拍照上傳**：`ActivityResultContracts.TakePicture` + `FileProvider`（`res/xml/file_paths.xml` 只開放 `cache/camera/`）。
   manifest **不要**宣告 `CAMERA` 權限：一旦宣告了卻沒取得授權，呼叫系統相機會丟 `SecurityException`
-- **上傳**：最多 3 張同時上傳，顯示整體進度；交給 WorkManager，使用者切走 App 也會傳完
-- **上傳成功自動複製連結到剪貼簿**（設定裡可以關掉），多張就一行一個
-- **上傳紀錄**：連結、`deletehash`、上傳時間存在 Room，可以從紀錄裡刪除 imgur 上的圖
-- **設定**：Client-ID、自動複製開關
+- **上傳**：`UploadWorker`（WorkManager），使用者切走 App 也會傳完。所有 batch 共用 `AppContainer.uploadSlots`，
+  最多 3 張同時上傳，首頁顯示合計的進度。網路類錯誤（`ImgurException.retryable`）整個 batch 最多試 3 次，
+  成功的檔案當下就刪掉，重試只傳剩下的
+- **上傳成功自動複製連結到剪貼簿**（設定裡可以關掉），多張就一行一個，batch 結束時由 Worker 複製。
+  Android 13 起系統複製時會自己顯示提示，App 不再重複顯示
+- **上傳紀錄**：連結、`deletehash`、上傳時間存在 Room，可以從紀錄裡刪除 imgur 上的圖；
+  imgur 刪不掉時（例如圖已經被清掉）讓使用者選擇只移除紀錄。
+  縮圖存在 `noBackupFilesDir/thumbs/`：不佔 Auto Backup 的 25 MB 額度（超過額度整個備份會失敗），還原後沒有縮圖就顯示空白
+- **設定**：Client-ID、檢查額度（`GET /3/credits`）、自動複製開關。
+  Client-ID 輸入框（`ui/ClientIdField.kt`）預設隱藏，用眼睛按鈕切換顯示，避免截圖、分享螢幕時外流；
+  鍵盤用密碼類型，輸入法不會把它學進字典或出現在建議字裡
+- 還沒做：上傳紀錄匯出成 JSON
+
+## 程式結構
+
+`app/src/main/java/com/twtrubiks/imgurshare/`：
+
+- `imgur/`：`ImgurClient`（OkHttp，所有 imgur API 都從這裡呼叫）、`ImgurResponses`（純 Kotlin 解析，JVM 測試）
+- `upload/`：`UploadWorker`、`UploadBatches`（等待上傳的圖放在 `cache/uploads/<batchId>/000.jpg`，序號就是複製連結的順序）、
+  `Thumbnails`、`UploadStatus`（純 Kotlin：合併多個 batch 的進度、結果文字、剪貼簿文字）
+- `data/`：`Settings`（DataStore）、`UploadRecord` / `UploadDao` / `AppDatabase`（Room）
+- `ui/`：`ImgurShareApp`（首頁 / 設定切換、選圖和拍照的 launcher）、`HomeScreen`、`SettingsScreen`、`MainViewModel`
+- `AppContainer`：App 層級的單例，由 `ImgurShareApplication` lazy 建立
+  （WorkManager 由 ContentProvider 初始化，恢復的上傳工作可能在 `Application.onCreate` 之前就要用到）
+
+Room 用的是 Room 3（package `androidx.room3`）：一定要 `setDriver(AndroidSQLiteDriver())`；
+journal mode 用 TRUNCATE，Auto Backup 直接複製 `databases/` 的檔案時才不會漏掉 WAL 裡的資料。
+schema 輸出在 `app/schemas/`，要 commit。改資料表一定要升版本並寫 migration，不能用 destructive migration——紀錄裡的 `deletehash` 掉了就永遠刪不掉圖
 
 ## imgur API
 
@@ -44,6 +65,7 @@
 
 ## 專案約定
 
+- 主要 branch 是 `main`，PR 一律發到 `main`
 - Gradle 專案就在 repo 根目錄，所有 `./gradlew` 都在根目錄跑
 - applicationId / namespace：`com.twtrubiks.imgurshare`（`scripts/ci/record.sh` 依賴這個值，改了要一起改）。
   不要改：applicationId 一變，手機會當成另一個 App，原本的上傳紀錄就接不回來
@@ -57,10 +79,18 @@
   **移除就會刪掉手機上的上傳紀錄**，有資料之後要先提醒使用者匯出
 - 使用者要 APK 時給 release 版（`app/build/outputs/apk/release/app-release.apk`），
   複製到 scratchpad 改名成 `imgur-share-<commit>.apk`，再用 SendUserFile（`display: attach`）傳送
+- README 的下載連結是 `releases/latest/download/imgur-share.apk`，GitHub Release 的 APK 檔名要固定是 `imgur-share.apk`。
+  雲端 session 不能建立或編輯 Release（proxy 回 403），把 APK 和 release notes 交給使用者在 GitHub 網頁上建立
+- README 的展示 GIF 和截圖在 `docs/images/`，完整影片在 `docs/demo.mp4`（GitHub README 不能播放 repo 裡的 mp4，只能放連結）。
+  畫面改版後從 `android-media` 重新產生，GIF 跳過開頭的桌面、2 倍速：
+  `ffmpeg -ss 9.5 -i demo.mp4 -vf "setpts=PTS/2,fps=8,scale=300:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=128:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle" -loop 0 demo.gif`
 - AGP 9.x 使用 built-in Kotlin：**不要**套 `org.jetbrains.kotlin.android`，Compose 要套 `org.jetbrains.kotlin.plugin.compose`
 - 版本起點（2026-10 查的最新穩定版）：AGP 9.4.1、Kotlin / Compose compiler plugin 2.4.21、Gradle wrapper 9.8.2、
   Compose BOM 2026.09.00、activity-compose 1.13.0、core-ktx 1.19.1、lifecycle-runtime-ktx 2.11.0、
   androidx.test runner 1.7.0、core 1.7.0、ext:junit 1.3.0、uiautomator 2.4.0。
+  功能依賴（2026-10 查的）：KSP 2.3.12、Room 3.0.3（`androidx.room3`）、sqlite-framework 2.7.1、WorkManager 2.12.0、
+  DataStore 1.3.0、lifecycle-viewmodel-compose / runtime-compose 2.11.0、OkHttp / mockwebserver3 5.5.1、
+  kotlinx-serialization-json 1.12.0（只用 `JsonElement`，不需要 serialization plugin）、kotlinx-coroutines-test 1.11.0。
   若 build 報版本相容問題，以錯誤訊息為準調整，並更新這段
 
 ## 雲端 VM 環境
@@ -90,7 +120,13 @@
 - 用 `By.text(...)` 找元件；要用 testTag 時，在 root 加 `Modifier.semantics { testTagsAsResourceId = true }` 再用 `By.res(...)`
 - 要確認細節的畫面用測試裡的 `screenshot("名稱")` 另存截圖
 - CI 沒有 Client-ID，也不能真的上傳到 imgur（而且錄影結果是公開的）。
-  上傳流程要能換成假的回應（例如讓 `ImgurClient` 的 base URL 可以指到 MockWebServer），展示流程要能在沒有 Client-ID 的情況下跑完
+  測試跑在 App 的 process 裡，`@Before` 把 `AppContainer.imgurClient` 換成指向 MockWebServer 的 client（`FakeImgur`），
+  WorkManager 的上傳也會用它；Client-ID 輸入假的 `demo-client-id`。
+  debug 版的 `src/debug/res/xml/network_security_config.xml` 允許明文連到 `localhost`，release 版不受影響
+- 假的圖片 id 用 8 碼（`demo0001`），imgur 的 id 是 5 或 7 碼，不會剛好對到別人的圖
+- 展示用的圖由測試自己畫，寫到 App 的外部資料夾後用 shell 複製到 `/sdcard/Pictures/ImgurShareDemo/` 再請媒體掃描
+  （App 沒有儲存權限）。相簿選取和「檔案」App 的分享都在 DocumentsUI（`com.android.documentsui`）裡操作：
+  側邊欄 → Images → ImgurShareDemo，長按第一張進入多選
 
 ## 錄影流程（GitHub Actions）
 

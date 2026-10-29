@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 只開放拍照的暫存資料夾（UploadBatches.newCameraFile） -->
+<paths>
+    <cache-path name="camera" path="camera/" />
+</paths>
