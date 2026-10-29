@@ -45,7 +45,7 @@ Authorization type 選「OAuth 2 authorization without a callback URL」，在 A
 匿名上傳的圖不屬於任何帳號，紀錄裡的 deletehash 是唯一能刪除它的憑證。紀錄會跟著 Android 備份轉移到新手機，
 但**解除安裝 App 會一起刪掉**。
 
-APK 用開發環境的 debug 金鑰簽章。之後的版本如果簽章不同，要先移除舊版才能安裝，而移除會一併刪掉上傳紀錄。
+APK 由 GitHub Actions 用固定的金鑰簽章，新版可以直接覆蓋安裝，上傳紀錄會保留。
 
 ⭐ **如果這個專案對您有幫助，請給一個 Star！** ⭐
 

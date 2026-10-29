@@ -74,13 +74,15 @@ schema 輸出在 `app/schemas/`，要 commit。改資料表一定要升版本並
   （`java.time` 在 API 26 就內建，不需要 core library desugaring；新增 API 29+ 的 API 前先跑 `./gradlew lintDebug` 看 NewApi）
   （Compose 1.12 / core 1.19 的 AAR metadata 要求 compileSdk ≥ 37；缺 `platforms;android-37.0` 時 AGP 會自動下載）
 - 依賴版本集中在 `gradle/libs.versions.toml`，新增依賴前先查最新穩定版
-- release 版開 R8（minify + shrinkResources），不上架所以用 debug 金鑰簽，可以和同一台機器打包的 debug 版互相覆蓋安裝。
-  debug 金鑰在 VM 的 `~/.android/debug.keystore`，換 session 會變，之後給使用者的 APK 簽章就對不上，要先移除舊版——
-  **移除就會刪掉手機上的上傳紀錄**，有資料之後要先提醒使用者匯出
-- 使用者要 APK 時給 release 版（`app/build/outputs/apk/release/app-release.apk`），
-  複製到 scratchpad 改名成 `imgur-share-<commit>.apk`，再用 SendUserFile（`display: attach`）傳送
-- README 的下載連結是 `releases/latest/download/imgur-share.apk`，GitHub Release 的 APK 檔名要固定是 `imgur-share.apk`。
-  雲端 session 不能建立或編輯 Release（proxy 回 403），把 APK 和 release notes 交給使用者在 GitHub 網頁上建立
+- release 版開 R8（minify + shrinkResources），不上架。發布版用固定的金鑰簽（alias `imgur-share`），
+  金鑰只存在 GitHub Actions secrets（`RELEASE_KEYSTORE_BASE64`、`RELEASE_KEYSTORE_PASSWORD`）和使用者自己的備份，不能進 repo。
+  沒有金鑰時（VM、錄影 CI）release 版退回 debug 金鑰簽，只能自己測試：debug 金鑰在 VM 的 `~/.android/debug.keystore`，
+  換 session 會變，簽章也和發布版不同，裝到手機上要先移除舊版——**移除就會刪掉手機上的上傳紀錄**
+- 發布：`git tag -a v1.2.3 -m "<release notes>"` 後 push tag，`.github/workflows/release.yml` 會打包、核對憑證 SHA-256、
+  建立 GitHub Release。APK 檔名固定是 `imgur-share.apk`，README 的下載連結 `releases/latest/download/imgur-share.apk` 靠它。
+  versionName 取自 tag，versionCode = major * 10000 + minor * 100 + patch，新的 tag 一定要比上一版大，不然手機不能覆蓋更新
+- 使用者要 APK 時請他從 GitHub Release 下載，VM 打包的 APK 是 debug 金鑰簽的，不要給使用者裝。
+  雲端 session 不能建立或編輯 Release（proxy 回 403），push tag 被擋時把 tag 指令交給使用者執行
 - README 的展示 GIF 和截圖在 `docs/images/`，完整影片在 `docs/demo.mp4`（GitHub README 不能播放 repo 裡的 mp4，只能放連結）。
   畫面改版後從 `android-media` 重新產生，GIF 跳過開頭的桌面、2 倍速：
   `ffmpeg -ss 9.5 -i demo.mp4 -vf "setpts=PTS/2,fps=8,scale=300:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=128:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle" -loop 0 demo.gif`

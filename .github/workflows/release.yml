@@ -1,0 +1,75 @@
+name: Release
+
+# push v* tag（例如 v1.2.3）時，用固定的發布金鑰打包 release APK，建立 GitHub Release。
+# 每一版的簽章都一樣，手機上可以直接覆蓋更新，上傳紀錄不會掉。
+# release notes 取自 tag 的訊息：git tag -a v1.2.3 -m "說明" && git push origin v1.2.3
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      # 發布金鑰的憑證 SHA-256。secrets 沒設好時 Gradle 會退回 debug 金鑰，比對不符就不發布
+      CERT_SHA256: 71558ccaadee9e7752582c11ffe5391024afa316c64d97a7072685d75f61e043
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Parse version
+        run: |
+          if [[ ! "$GITHUB_REF_NAME" =~ ^v([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
+            echo "::error::tag 要是 v<major>.<minor>.<patch>，例如 v1.2.3"
+            exit 1
+          fi
+          major=${BASH_REMATCH[1]} minor=${BASH_REMATCH[2]} patch=${BASH_REMATCH[3]}
+          if (( minor > 99 || patch > 99 )); then
+            echo "::error::minor 和 patch 最大 99（versionCode = major * 10000 + minor * 100 + patch）"
+            exit 1
+          fi
+          echo "VERSION_NAME=${GITHUB_REF_NAME#v}" >> "$GITHUB_ENV"
+          echo "VERSION_CODE=$(( 10#$major * 10000 + 10#$minor * 100 + 10#$patch ))" >> "$GITHUB_ENV"
+
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - uses: gradle/actions/setup-gradle@v6
+
+      - name: Restore keystore
+        env:
+          KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/release.jks"
+          echo "RELEASE_KEYSTORE=$RUNNER_TEMP/release.jks" >> "$GITHUB_ENV"
+
+      - name: Build
+        env:
+          RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
+        run: ./gradlew testDebugUnitTest assembleRelease
+
+      - name: Verify signature
+        run: |
+          apksigner=$(ls -d "$ANDROID_HOME"/build-tools/*/apksigner | sort -V | tail -1)
+          "$apksigner" verify --print-certs app/build/outputs/apk/release/app-release.apk | tee certs.txt
+          if ! grep -q "SHA-256 digest: ${CERT_SHA256}" certs.txt; then
+            echo "::error::APK 不是用發布金鑰簽的，檢查 RELEASE_KEYSTORE_BASE64 / RELEASE_KEYSTORE_PASSWORD"
+            exit 1
+          fi
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # checkout 拿到的 tag 可能沒有 tag 訊息，重抓一次 tag 本身
+          git fetch -q --force origin "refs/tags/${GITHUB_REF_NAME}:refs/tags/${GITHUB_REF_NAME}"
+          git tag -l --format='%(contents)' "$GITHUB_REF_NAME" > notes.md
+          # README 的下載連結指向 releases/latest/download/imgur-share.apk，檔名要固定
+          cp app/build/outputs/apk/release/app-release.apk imgur-share.apk
+          gh release create "$GITHUB_REF_NAME" imgur-share.apk \
+            --title "$GITHUB_REF_NAME" --notes-file notes.md --verify-tag

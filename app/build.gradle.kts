@@ -16,10 +16,25 @@ android {
         // Android 9；java.time 從 API 26 就內建，不需要 core library desugaring
         minSdk = 28
         targetSdk = 36
-        versionCode = 1
-        versionName = "0.1"
+        // release workflow 從 tag（v1.2.3）算出版本，本機 build 用預設值
+        versionCode = System.getenv("VERSION_CODE")?.toInt() ?: 1
+        versionName = System.getenv("VERSION_NAME") ?: "0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        // 發布用的固定金鑰，只有 release workflow 從 secrets 還原出來。
+        // 每一版簽章都一樣手機才能直接覆蓋更新；簽章不同就要先移除舊版，上傳紀錄會跟著不見
+        System.getenv("RELEASE_KEYSTORE")?.let { keystore ->
+            create("release") {
+                storeFile = file(keystore)
+                storePassword = System.getenv("RELEASE_KEYSTORE_PASSWORD")
+                keyAlias = "imgur-share"
+                // PKCS12 的金鑰密碼就是 keystore 密碼
+                keyPassword = System.getenv("RELEASE_KEYSTORE_PASSWORD")
+            }
+        }
     }
 
     buildTypes {
@@ -28,8 +43,8 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"))
-            // 不上架，用 debug 金鑰簽就能直接安裝，也能覆蓋同一台機器打包的 debug 版
-            signingConfig = signingConfigs.getByName("debug")
+            // 沒有發布金鑰時（本機、雲端 session、錄影 CI）用 debug 金鑰簽，只給自己測試
+            signingConfig = signingConfigs.findByName("release") ?: signingConfigs.getByName("debug")
         }
     }
 
