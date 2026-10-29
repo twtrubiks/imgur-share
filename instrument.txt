@@ -1,0 +1,8 @@
+
+com.twtrubiks.imgurshare.DemoRecordingTest:.
+
+Time: 104.852
+
+OK (1 test)
+
+

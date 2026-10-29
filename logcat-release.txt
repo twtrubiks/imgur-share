@@ -1,0 +1,197 @@
+--------- beginning of main
+10-29 04:02:32.654  1961  2068 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@ca5c4ba)
+10-29 04:02:32.655  1961  1975 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@ca5c4ba)
+10-29 04:02:33.654  1961  2068 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@6619f6b)
+10-29 04:02:33.655  1961  1975 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@6619f6b)
+--------- beginning of system
+10-29 04:02:33.808  1961  1976 I ActivityManager: Force stopping com.twtrubiks.imgurshare appid=10067 user=-1: installPackageLI
+10-29 04:02:33.818  1961  1989 I PackageManager: Update package com.twtrubiks.imgurshare code path from /data/app/com.twtrubiks.imgurshare-M_Pdc-sk8UlffBD-rzWv1g== to /data/app/com.twtrubiks.imgurshare-aVTPCXzTvjltVGSuUblG_w==; Retain data and using new
+10-29 04:02:33.818  1961  1989 I PackageManager: Update package com.twtrubiks.imgurshare resource path from /data/app/com.twtrubiks.imgurshare-M_Pdc-sk8UlffBD-rzWv1g== to /data/app/com.twtrubiks.imgurshare-aVTPCXzTvjltVGSuUblG_w==; Retain data and using new
+10-29 04:02:33.831  1961  1989 I PackageManager.DexOptimizer: Running dexopt (dexoptNeeded=1) on: /data/app/com.twtrubiks.imgurshare-aVTPCXzTvjltVGSuUblG_w==/base.apk pkg=com.twtrubiks.imgurshare isa=x86_64 dexoptFlags=boot_complete,profile_guided,public,enable_hidden_api_checks targetFilter=speed-profile oatDir=/data/app/com.twtrubiks.imgurshare-aVTPCXzTvjltVGSuUblG_w==/oat classLoaderContext=PCL[]
+10-29 04:02:33.831  1710  2009 V installed: DexInv: --- BEGIN '/data/app/com.twtrubiks.imgurshare-aVTPCXzTvjltVGSuUblG_w==/base.apk' ---
+10-29 04:02:33.837  4031  4031 W dex2oat : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 04:02:33.837  4031  4031 I dex2oat : /system/bin/dex2oat --input-vdex-fd=-1 --output-vdex-fd=10 --compiler-filter=speed-profile --classpath-dir=/data/app/com.twtrubiks.imgurshare-aVTPCXzTvjltVGSuUblG_w== --class-loader-context=PCL[] --generate-mini-debug-info --compact-dex-level=none --compilation-reason=install
+10-29 04:02:33.995  4031  4033 W dex2oat : Accessing hidden method Landroid/graphics/Canvas;->drawPatch(Landroid/graphics/NinePatch;Landroid/graphics/Rect;Landroid/graphics/Paint;)V (dark greylist, linking)
+10-29 04:02:33.995  4031  4033 W dex2oat : Accessing hidden method Landroid/graphics/Canvas;->drawPatch(Landroid/graphics/NinePatch;Landroid/graphics/RectF;Landroid/graphics/Paint;)V (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getScaleX()F (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setScaleX(F)Z (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getScaleY()F (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setScaleY(F)Z (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getTranslationX()F (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setTranslationX(F)Z (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getTranslationY()F (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setTranslationY(F)Z (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getElevation()F (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setElevation(F)Z (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getRotation()F (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setRotation(F)Z (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getRotationX()F (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setRotationX(F)Z (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getRotationY()F (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setRotationY(F)Z (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getCameraDistance()F (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setCameraDistance(F)Z (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getPivotX()F (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setPivotX(F)Z (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getPivotY()F (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setPivotY(F)Z (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getClipToOutline()Z (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setClipToOutline(Z)Z (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getAlpha()F (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setAlpha(F)Z (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->offsetTopAndBottom(I)Z (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setLayerType(I)Z (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->hasOverlappingRendering()Z (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setScaleY(F)Z (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getMatrix(Landroid/graphics/Matrix;)V (dark greylist, linking)
+10-29 04:02:34.078  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setPivotX(F)Z (dark greylist, linking)
+10-29 04:02:34.079  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setPivotY(F)Z (dark greylist, linking)
+10-29 04:02:34.079  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setLayerPaint(Landroid/graphics/Paint;)Z (dark greylist, linking)
+10-29 04:02:34.079  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setCameraDistance(F)Z (dark greylist, linking)
+10-29 04:02:34.079  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setRotationX(F)Z (dark greylist, linking)
+10-29 04:02:34.079  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setClipToOutline(Z)Z (dark greylist, linking)
+10-29 04:02:34.079  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setClipToOutline(Z)Z (dark greylist, linking)
+10-29 04:02:34.079  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setLayerType(I)Z (dark greylist, linking)
+10-29 04:02:34.079  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setLayerPaint(Landroid/graphics/Paint;)Z (dark greylist, linking)
+10-29 04:02:34.079  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setLayerType(I)Z (dark greylist, linking)
+10-29 04:02:34.079  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setLayerPaint(Landroid/graphics/Paint;)Z (dark greylist, linking)
+10-29 04:02:34.079  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setLayerType(I)Z (dark greylist, linking)
+10-29 04:02:34.079  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setLayerPaint(Landroid/graphics/Paint;)Z (dark greylist, linking)
+10-29 04:02:34.079  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setPivotX(F)Z (dark greylist, linking)
+10-29 04:02:34.079  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setPivotY(F)Z (dark greylist, linking)
+10-29 04:02:34.079  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setPivotX(F)Z (dark greylist, linking)
+10-29 04:02:34.079  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setPivotY(F)Z (dark greylist, linking)
+10-29 04:02:34.079  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setRotationY(F)Z (dark greylist, linking)
+10-29 04:02:34.079  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setAlpha(F)Z (dark greylist, linking)
+10-29 04:02:34.079  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setElevation(F)Z (dark greylist, linking)
+10-29 04:02:34.079  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setRotation(F)Z (dark greylist, linking)
+10-29 04:02:34.079  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setTranslationY(F)Z (dark greylist, linking)
+10-29 04:02:34.080  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setOutline(Landroid/graphics/Outline;)Z (dark greylist, linking)
+10-29 04:02:34.080  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setScaleX(F)Z (dark greylist, linking)
+10-29 04:02:34.080  4031  4033 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setTranslationX(F)Z (dark greylist, linking)
+10-29 04:02:34.104  4031  4031 W dex2oat : Accessing hidden method Landroid/graphics/Paint;->getTextBounds(Ljava/lang/CharSequence;IILandroid/graphics/Rect;)V (dark greylist, linking)
+10-29 04:02:34.107  4031  4031 W dex2oat : Accessing hidden method Landroid/app/job/JobParameters;->getStopReason()I (dark greylist, linking)
+10-29 04:02:34.181  4031  4031 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getAmbientShadowColor()I (dark greylist, linking)
+10-29 04:02:34.181  4031  4031 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getSpotShadowColor()I (dark greylist, linking)
+10-29 04:02:34.181  4031  4031 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setAmbientShadowColor(I)Z (dark greylist, linking)
+10-29 04:02:34.181  4031  4031 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setSpotShadowColor(I)Z (dark greylist, linking)
+10-29 04:02:34.572  4031  4031 W dex2oat : Accessing hidden method Landroid/app/job/JobParameters;->getStopReason()I (dark greylist, linking)
+10-29 04:02:34.573  4031  4031 W dex2oat : Accessing hidden method Landroid/graphics/Canvas;->drawPatch(Landroid/graphics/NinePatch;Landroid/graphics/Rect;Landroid/graphics/Paint;)V (dark greylist, linking)
+10-29 04:02:34.573  4031  4031 W dex2oat : Accessing hidden method Landroid/graphics/Canvas;->drawPatch(Landroid/graphics/NinePatch;Landroid/graphics/RectF;Landroid/graphics/Paint;)V (dark greylist, linking)
+10-29 04:02:34.573  4031  4031 W dex2oat : Accessing hidden method Landroid/graphics/Paint;->getTextBounds(Ljava/lang/CharSequence;IILandroid/graphics/Rect;)V (dark greylist, linking)
+10-29 04:02:34.582  4031  4031 I dex2oat : Explicit concurrent copying GC freed 16871(2MB) AllocSpace objects, 0(0B) LOS objects, 99% free, 728B/1536KB, paused 346us total 2.349ms
+10-29 04:02:34.618  4031  4031 I dex2oat : dex2oat took 781.502ms (1.330s cpu) (threads: 2) arena alloc=40KB (41936B) java alloc=16KB (17112B) native alloc=4MB (5154568B) free=2MB (2185464B)
+10-29 04:02:34.620  1710  2009 V installed: DexInv: --- END '/data/app/com.twtrubiks.imgurshare-aVTPCXzTvjltVGSuUblG_w==/base.apk' (success) ---
+10-29 04:02:34.621  1961  1989 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-29 04:02:34.621  1961  1989 D PackageManager: Clear ephemeral installer activity
+10-29 04:02:34.635  1961  1989 I system_server: Explicit concurrent copying GC freed 43152(2MB) AllocSpace objects, 31(1388KB) LOS objects, 42% free, 5MB/9MB, paused 373us total 13.616ms
+10-29 04:02:34.637  1710  2009 E         : Couldn't opendir /data/app/vmdl263982281.tmp: No such file or directory
+10-29 04:02:34.637  1710  2009 E installd: Failed to delete /data/app/vmdl263982281.tmp: No such file or directory
+10-29 04:02:34.638  1961  1989 I ActivityManager: Force stopping com.twtrubiks.imgurshare appid=10067 user=0: pkg removed
+10-29 04:02:34.647  1961  2035 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-29 04:02:34.653  1961  2611 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REMOVED dat=package:com.twtrubiks.imgurshare flg=0x4000010 (has extras) } to com.android.musicfx/.Compatibility$Receiver
+10-29 04:02:34.655  1961  2068 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@eedd30d)
+10-29 04:02:34.658  1961  2035 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-29 04:02:34.663  1961  1961 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: DDC.oR@AIM
+10-29 04:02:34.665  1961  1961 V BackupManagerConstants: getFullBackupIntervalMilliseconds(...) returns 86400000
+10-29 04:02:34.670  1961  2035 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-29 04:02:34.674  1961  1975 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@eedd30d)
+10-29 04:02:34.674  1961  2611 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.twtrubiks.imgurshare flg=0x4000010 (has extras) } to com.android.musicfx/.Compatibility$Receiver
+10-29 04:02:34.675  1961  1976 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REPLACED dat=package:com.twtrubiks.imgurshare flg=0x4000010 (has extras) } to com.android.musicfx/.Compatibility$Receiver
+10-29 04:02:34.679  3401  3919 D ProvidersAccess: Matched roots: [Root{authority=null, rootId=null, title=Recent, isUsb=false, isSd=false, isMtp=false} @ content:/root/null, Root{authority=com.android.providers.downloads.documents, rootId=downloads, title=Downloads, isUsb=false, isSd=false, isMtp=false} @ content://com.android.providers.downloads.documents/root/downloads, Root{authority=com.android.providers.media.documents, rootId=images_root, title=Images, isUsb=false, isSd=false, isMtp=false} @ content://com.android.providers.media.documents/root/images_root, Root{authority=com.android.providers.media.documents, rootId=videos_root, title=Videos, isUsb=false, isSd=false, isMtp=false} @ content://com.android.providers.media.documents/root/videos_root, Root{authority=com.android.providers.media.documents, rootId=audio_root, title=Audio, isUsb=false, isSd=false, isMtp=false} @ content://com.android.providers.media.documents/root/audio_root, Root{authority=com.android.externalstorage.documents, rootId=home, title=Documents, isUsb=false, isSd=false, isMtp=false} @ content://com.android.externalstorage.documents/root/home]
+10-29 04:02:34.681  3401  3921 D ProvidersAccess: Matched roots: [Root{authority=null, rootId=null, title=Recent, isUsb=false, isSd=false, isMtp=false} @ content:/root/null, Root{authority=com.android.providers.downloads.documents, rootId=downloads, title=Downloads, isUsb=false, isSd=false, isMtp=false} @ content://com.android.providers.downloads.documents/root/downloads, Root{authority=com.android.providers.media.documents, rootId=images_root, title=Images, isUsb=false, isSd=false, isMtp=false} @ content://com.android.providers.media.documents/root/images_root, Root{authority=com.android.providers.media.documents, rootId=videos_root, title=Videos, isUsb=false, isSd=false, isMtp=false} @ content://com.android.providers.media.documents/root/videos_root, Root{authority=com.android.providers.media.documents, rootId=audio_root, title=Audio, isUsb=false, isSd=false, isMtp=false} @ content://com.android.providers.media.documents/root/audio_root, Root{authority=com.android.externalstorage.documents, rootId=home, title=Documents, isUsb=false, isSd=false, isMtp=false} @ content://com.android.externalstorage.documents/root/home]
+10-29 04:02:34.685  1766  1773 D hwcomposer: hw_composer sent 114 syncs in 62s
+10-29 04:02:34.706  2175  2175 D CarrierSvcBindHelper: No carrier app for: 0
+10-29 04:02:34.707  2175  2175 D CarrierSvcBindHelper: No carrier app for: 0
+10-29 04:02:34.710  2175  2175 D CarrierConfigLoader: mHandler: 9 phoneId: 0
+10-29 04:02:34.715  1961  1977 D AutofillUI: destroySaveUiUiThread(): already destroyed
+10-29 04:02:34.715  1961  1975 D AutofillManagerServiceImpl: Reset component for user 0 ()
+10-29 04:02:34.715  1961  1975 D FieldClassificationStrategy: reset(): service is not bound. Do nothing.
+10-29 04:02:34.715  1961  1975 W VoiceInteractionManagerService: no available voice recognition services found for user 0
+10-29 04:02:34.718  1961  2613 I ActivityManager: START u0 {flg=0x10000000 cmp=com.twtrubiks.imgurshare/.MainActivity} from uid 2000
+10-29 04:02:34.759  4045  4045 W biks.imgurshar: Unexpected CPU variant for X86 using defaults: x86_64
+10-29 04:02:34.760  1961  1978 I ActivityManager: Start proc 4045:com.twtrubiks.imgurshare/u0a67 for activity com.twtrubiks.imgurshare/.MainActivity
+10-29 04:02:34.826  1564  1612 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 17973248
+10-29 04:02:34.859  4045  4045 D WM-WrkMgrInitializer: Initializing WorkManager with default configuration.
+10-29 04:02:34.866  4045  4045 D WM-Schedulers: Created SystemJobScheduler and enabled SystemJobService
+10-29 04:02:34.871  4045  4060 D WM-ForceStopRunnable: The default process name was not specified.
+10-29 04:02:34.871  4045  4060 D WM-ForceStopRunnable: Performing cleanup operations.
+10-29 04:02:34.888  4045  4045 D OpenGLRenderer: Skia GL Pipeline
+10-29 04:02:34.891  1914  1918 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-29 04:02:34.988  4045  4045 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+10-29 04:02:35.005  1564  1612 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 17973248
+10-29 04:02:35.052  1564  1612 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 17973248
+10-29 04:02:35.055  2504  2524 D         : HostConnection::get() New Host Connection established 0x7dc0f1445180, tid 2524
+10-29 04:02:35.058  2090  2331 D         : HostConnection::get() New Host Connection established 0x7dc0f144c2a0, tid 2331
+10-29 04:02:35.100  2090  2319 D EGL_emulation: eglMakeCurrent: 0x7dc0f1437720: ver 3 0 (tinfo 0x7dc0f140db40)
+10-29 04:02:35.114  4045  4045 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->getScaleX()F (dark greylist, linking)
+10-29 04:02:35.114  4045  4045 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setScaleY(F)Z (dark greylist, linking)
+10-29 04:02:35.114  4045  4045 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->getMatrix(Landroid/graphics/Matrix;)V (dark greylist, linking)
+10-29 04:02:35.115  4045  4045 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setPivotX(F)Z (dark greylist, linking)
+10-29 04:02:35.115  4045  4045 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setLayerPaint(Landroid/graphics/Paint;)Z (dark greylist, linking)
+10-29 04:02:35.115  4045  4045 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setCameraDistance(F)Z (dark greylist, linking)
+10-29 04:02:35.115  4045  4045 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setRotationX(F)Z (dark greylist, linking)
+10-29 04:02:35.115  4045  4045 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setClipToOutline(Z)Z (dark greylist, linking)
+10-29 04:02:35.115  4045  4045 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setClipToOutline(Z)Z (dark greylist, linking)
+10-29 04:02:35.115  4045  4045 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setLayerType(I)Z (dark greylist, linking)
+10-29 04:02:35.115  4045  4045 I chatty  : uid=10067(com.twtrubiks.imgurshare) identical 1 line
+10-29 04:02:35.115  4045  4045 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setLayerType(I)Z (dark greylist, linking)
+10-29 04:02:35.115  4045  4045 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setPivotX(F)Z (dark greylist, linking)
+10-29 04:02:35.115  4045  4045 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setPivotX(F)Z (dark greylist, linking)
+10-29 04:02:35.115  4045  4045 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setRotationY(F)Z (dark greylist, linking)
+10-29 04:02:35.115  4045  4045 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setAlpha(F)Z (dark greylist, linking)
+10-29 04:02:35.115  4045  4045 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setElevation(F)Z (dark greylist, linking)
+10-29 04:02:35.116  4045  4045 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setRotation(F)Z (dark greylist, linking)
+10-29 04:02:35.116  4045  4045 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setTranslationY(F)Z (dark greylist, linking)
+10-29 04:02:35.116  4045  4045 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setOutline(Landroid/graphics/Outline;)Z (dark greylist, linking)
+10-29 04:02:35.116  4045  4045 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setScaleX(F)Z (dark greylist, linking)
+10-29 04:02:35.116  4045  4045 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setTranslationX(F)Z (dark greylist, linking)
+10-29 04:02:35.116  4045  4045 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->getScaleX()F (dark greylist, linking)
+10-29 04:02:35.134  2090  2319 D EGL_emulation: eglMakeCurrent: 0x7dc0f1437720: ver 3 0 (tinfo 0x7dc0f140db40)
+10-29 04:02:35.234  4045  4063 D         : HostConnection::get() New Host Connection established 0x7dc0f143fc00, tid 4063
+10-29 04:02:35.237  1564  1612 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 17973248
+10-29 04:02:35.242  4045  4063 I ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasWideColorDisplay retrieved: 0
+10-29 04:02:35.242  1720  1763 E storaged: getDiskStats failed with result NOT_SUPPORTED and size 0
+10-29 04:02:35.242  4045  4063 I ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasHDRDisplay retrieved: 0
+10-29 04:02:35.242  4045  4063 I OpenGLRenderer: Initialized EGL, version 1.4
+10-29 04:02:35.242  4045  4063 D OpenGLRenderer: Swap behavior 1
+10-29 04:02:35.243  1564  1612 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 17973248
+10-29 04:02:35.264  1564  1612 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 17973248
+10-29 04:02:35.265  4045  4063 D EGL_emulation: eglCreateContext: 0x7dc0f1443040: maj 3 min 0 rcv 3
+10-29 04:02:35.279  4045  4063 D EGL_emulation: eglMakeCurrent: 0x7dc0f1443040: ver 3 0 (tinfo 0x7dc0f14d1c00)
+10-29 04:02:35.311  1914  1929 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-29 04:02:35.514  4045  4063 D EGL_emulation: eglMakeCurrent: 0x7dc0f1443040: ver 3 0 (tinfo 0x7dc0f14d1c00)
+10-29 04:02:35.657  1961  2068 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@f8bbb7a)
+10-29 04:02:35.657  1961  1975 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@f8bbb7a)
+10-29 04:02:35.703  3401  3439 D EGL_emulation: eglMakeCurrent: 0x7dc0f1437540: ver 3 0 (tinfo 0x7dc0f140dce0)
+10-29 04:02:35.706  2090  2319 D EGL_emulation: eglMakeCurrent: 0x7dc0f1437720: ver 3 0 (tinfo 0x7dc0f140db40)
+10-29 04:02:35.777  2090  2319 D EGL_emulation: eglMakeCurrent: 0x7dc0f1437720: ver 3 0 (tinfo 0x7dc0f140db40)
+10-29 04:02:35.862  1961  3578 I ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasWideColorDisplay retrieved: 0
+10-29 04:02:35.862  1961  3578 I ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasHDRDisplay retrieved: 0
+10-29 04:02:35.862  1961  3578 I OpenGLRenderer: Initialized EGL, version 1.4
+10-29 04:02:35.862  1961  3578 D OpenGLRenderer: Swap behavior 1
+10-29 04:02:35.863  1961  3578 D EGL_emulation: eglCreateContext: 0x7dc0d835cf00: maj 3 min 0 rcv 3
+10-29 04:02:35.871  1961  3578 D EGL_emulation: eglMakeCurrent: 0x7dc0d835cf00: ver 3 0 (tinfo 0x7dc0dcad2800)
+10-29 04:02:35.971  4045  4063 I OpenGLRenderer: Davey! duration=975ms; Flags=0, IntendedVsync=146510107552, Vsync=146943440868, OldestInputEvent=9223372036854775807, NewestInputEvent=0, HandleInputStart=146956985190, AnimationStart=146957042790, PerformTraversalsStart=146957064450, DrawStart=146961806520, SyncQueued=147029631440, SyncStart=147060928680, IssueDrawCommandsStart=147060985590, SwapBuffers=147422678890, FrameCompleted=147517099770, DequeueBufferDuration=36000, QueueBufferDuration=234000, 
+10-29 04:02:35.978  4045  4045 I Choreographer: Skipped 32 frames!  The application may be doing too much work on its main thread.
+10-29 04:02:36.049  1961  1984 I ActivityManager: Displayed com.twtrubiks.imgurshare/.MainActivity: +1s239ms (total +6s682ms)
+10-29 04:02:36.294  1914  2384 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen com.twtrubiks.imgurshare#0
+10-29 04:02:36.294  1914  2384 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen com.twtrubiks.imgurshare#0
+10-29 04:02:36.357  2090  2319 D EGL_emulation: eglMakeCurrent: 0x7dc0f1437720: ver 3 0 (tinfo 0x7dc0f140db40)
+10-29 04:02:36.481  2090  2319 I chatty  : uid=10015(com.android.systemui) RenderThread identical 2 lines
+10-29 04:02:36.559  2090  2319 D EGL_emulation: eglMakeCurrent: 0x7dc0f1437720: ver 3 0 (tinfo 0x7dc0f140db40)
+10-29 04:02:36.655  1961  2068 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@8d097a0)
+10-29 04:02:36.655  1961  1975 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@8d097a0)
+10-29 04:02:36.728  2090  2319 D EGL_emulation: eglMakeCurrent: 0x7dc0f1437720: ver 3 0 (tinfo 0x7dc0f140db40)
+10-29 04:02:37.186  1961  2477 V BackupManagerConstants: getFullBackupRequiredNetworkType(...) returns 2
+10-29 04:02:37.186  1961  2477 V BackupManagerConstants: getFullBackupRequireCharging(...) returns true
+10-29 04:02:36.833  2090  2319 D EGL_emulation: eglMakeCurrent: 0x7dc0f1437720: ver 3 0 (tinfo 0x7dc0f140db40)
+10-29 04:02:37.567  1961  2613 E memtrack: Couldn't load memtrack module
+10-29 04:02:37.567  1961  2613 W android.os.Debug: failed to get memory consumption info: -1
+10-29 04:02:37.655  1961  2068 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@fe0871e)
+10-29 04:02:37.655  1961  1975 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@fe0871e)
+10-29 04:02:38.655  1961  2068 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@af8dbff)
+10-29 04:02:38.655  1961  1975 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@af8dbff)
+10-29 04:02:39.092  1914  2033 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-29 04:02:39.093  1564  1612 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 17973248
+10-29 04:02:39.111  4069  4069 D         : HostConnection::get() New Host Connection established 0x787e1b02ee40, tid 4069
