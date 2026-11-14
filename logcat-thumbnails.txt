@@ -1,0 +1,90 @@
+--------- beginning of main
+11-14 07:48:13.404  3993  3993 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-14 07:48:13.424  3993  3993 W app_process: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 07:48:13.424  3993  3993 I app_process: The ClassLoaderContext is a special shared library.
+11-14 07:48:13.432  3993  3993 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+--------- beginning of system
+11-14 07:48:13.433  1942  2627 I ActivityManager: Force stopping com.twtrubiks.imgurshare appid=10067 user=0: start instr
+11-14 07:48:13.438  4003  4003 I biks.imgurshar: Late-enabling -Xcheck:jni
+11-14 07:48:13.444  1942  1959 I ActivityManager: Start proc 4003:com.twtrubiks.imgurshare/u0a67 for added application com.twtrubiks.imgurshare
+11-14 07:48:13.445  4003  4003 W biks.imgurshar: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 07:48:13.456  4003  4003 W ActivityThread: Package uses different ABI(s) than its instrumentation: package[com.twtrubiks.imgurshare]: x86_64, null instrumentation[com.twtrubiks.imgurshare.test]: null, null
+11-14 07:48:13.457  4003  4003 W biks.imgurshar: ClassLoaderContext classpath size mismatch for position 0. expected=0, found=4 (PCL[] | PCL[/data/app/com.twtrubiks.imgurshare.test-DS2GMmGvxcpBZXRWSlmP7A==/base.apk*438441467:/data/app/com.twtrubiks.imgurshare.test-DS2GMmGvxcpBZXRWSlmP7A==/base.apk!classes2.dex*3475111205:/data/app/com.twtrubiks.imgurshare.test-DS2GMmGvxcpBZXRWSlmP7A==/base.apk!classes3.dex*2330476834:/data/app/com.twtrubiks.imgurshare.test-DS2GMmGvxcpBZXRWSlmP7A==/base.apk!classes4.dex*1144132602])
+11-14 07:48:13.458  4003  4003 W biks.imgurshar: Found duplicate classes, falling back to extracting from APK : /data/app/com.twtrubiks.imgurshare-ru-WnUdaKwiQ5if8ZpqOQA==/base.apk
+11-14 07:48:13.458  4003  4003 W biks.imgurshar: NOTE: This wastes RAM and hurts startup performance.
+11-14 07:48:13.458  4003  4003 W biks.imgurshar: Found duplicated class when checking oat files: 'Landroid/accessibilityservice/AccessibilityService$TakeScreenshotCallback;' in /data/app/com.twtrubiks.imgurshare-ru-WnUdaKwiQ5if8ZpqOQA==/base.apk!classes8.dex and /data/app/com.twtrubiks.imgurshare.test-DS2GMmGvxcpBZXRWSlmP7A==/base.apk!classes4.dex
+11-14 07:48:13.458  4003  4003 W biks.imgurshar: 
+11-14 07:48:13.727  4003  4003 W biks.imgurshar: ClassLoaderContext size mismatch. expected=1, actual=2 (PCL[] | PCL[];PCL[/data/app/com.twtrubiks.imgurshare.test-DS2GMmGvxcpBZXRWSlmP7A==/base.apk*438441467:/data/app/com.twtrubiks.imgurshare.test-DS2GMmGvxcpBZXRWSlmP7A==/base.apk!classes2.dex*3475111205:/data/app/com.twtrubiks.imgurshare.test-DS2GMmGvxcpBZXRWSlmP7A==/base.apk!classes3.dex*2330476834:/data/app/com.twtrubiks.imgurshare.test-DS2GMmGvxcpBZXRWSlmP7A==/base.apk!classes4.dex*1144132602:/data/app/com.twtrubiks.imgurshare-ru-WnUdaKwiQ5if8ZpqOQA==/base.apk*4262648142:/data/app/com.twtrubiks.imgurshare-ru-WnUdaKwiQ5if8ZpqOQA==/base.apk!classes2.dex*3303419366:/data/app/com.twtrubiks.imgurshare-ru-WnUdaKwiQ5if8ZpqOQA==/base.apk!classes3.dex*557107852:/data/app/com.twtrubiks.imgurshare-ru-WnUdaKwiQ5if8ZpqOQA==/base.apk!classes4.dex*2861020135:/data/app/com.twtrubiks.imgurshare-ru-WnUdaKwiQ5if8ZpqOQA==/base.apk!classes5.dex*1823986750:/data/app/com.twtrubiks.imgurshare-ru-WnUdaKwiQ5if8ZpqOQA==/base.apk!classes6.dex*2366169074:/data/app/com.twtrubiks.img
+11-14 07:48:13.727  4003  4003 W biks.imgurshar: Found duplicate classes, falling back to extracting from APK : /data/app/com.twtrubiks.imgurshare.test-DS2GMmGvxcpBZXRWSlmP7A==/base.apk
+11-14 07:48:13.727  4003  4003 W biks.imgurshar: NOTE: This wastes RAM and hurts startup performance.
+11-14 07:48:13.727  4003  4003 W biks.imgurshar: Found duplicated class when checking oat files: 'Landroid/accessibilityservice/AccessibilityService$TakeScreenshotCallback;' in /data/app/com.twtrubiks.imgurshare.test-DS2GMmGvxcpBZXRWSlmP7A==/base.apk!classes4.dex and /data/app/com.twtrubiks.imgurshare-ru-WnUdaKwiQ5if8ZpqOQA==/base.apk!classes8.dex
+11-14 07:48:13.727  4003  4003 W biks.imgurshar: 
+11-14 07:48:13.735  4003  4003 W biks.imgurshar: ClassLoaderContext size mismatch. expected=1, actual=2 (PCL[] | PCL[/data/app/com.twtrubiks.imgurshare.test-DS2GMmGvxcpBZXRWSlmP7A==/base.apk*438441467:/data/app/com.twtrubiks.imgurshare.test-DS2GMmGvxcpBZXRWSlmP7A==/base.apk!classes2.dex*3475111205:/data/app/com.twtrubiks.imgurshare.test-DS2GMmGvxcpBZXRWSlmP7A==/base.apk!classes3.dex*2330476834:/data/app/com.twtrubiks.imgurshare.test-DS2GMmGvxcpBZXRWSlmP7A==/base.apk!classes4.dex*1144132602];PCL[/data/app/com.twtrubiks.imgurshare.test-DS2GMmGvxcpBZXRWSlmP7A==/base.apk*438441467:/data/app/com.twtrubiks.imgurshare.test-DS2GMmGvxcpBZXRWSlmP7A==/base.apk!classes2.dex*3475111205:/data/app/com.twtrubiks.imgurshare.test-DS2GMmGvxcpBZXRWSlmP7A==/base.apk!classes3.dex*2330476834:/data/app/com.twtrubiks.imgurshare.test-DS2GMmGvxcpBZXRWSlmP7A==/base.apk!classes4.dex*1144132602:/data/app/com.twtrubiks.imgurshare-ru-WnUdaKwiQ5if8ZpqOQA==/base.apk*4262648142:/data/app/com.twtrubiks.imgurshare-ru-WnUdaKwiQ5if8ZpqOQA==/base.apk!classes2.dex*3303419366:/data/app/com.twtrubi
+11-14 07:48:13.735  4003  4003 W biks.imgurshar: Found duplicate classes, falling back to extracting from APK : /data/app/com.twtrubiks.imgurshare-ru-WnUdaKwiQ5if8ZpqOQA==/base.apk
+11-14 07:48:13.735  4003  4003 W biks.imgurshar: NOTE: This wastes RAM and hurts startup performance.
+11-14 07:48:13.735  4003  4003 W biks.imgurshar: Found duplicated class when checking oat files: 'L_COROUTINE/ArtificialStackFrames;' in /data/app/com.twtrubiks.imgurshare-ru-WnUdaKwiQ5if8ZpqOQA==/base.apk and /data/app/com.twtrubiks.imgurshare-ru-WnUdaKwiQ5if8ZpqOQA==/base.apk
+11-14 07:48:13.735  4003  4003 W biks.imgurshar: 
+11-14 07:48:13.768  1942  3031 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@e663c94)
+11-14 07:48:13.768  1942  1956 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@e663c94)
+11-14 07:48:14.002  4003  4003 W biks.imgurshar: Accessing hidden method Landroid/app/Instrumentation;->execStartActivity(Landroid/content/Context;Landroid/os/IBinder;Landroid/os/IBinder;Landroid/app/Activity;Landroid/content/Intent;ILandroid/os/Bundle;)Landroid/app/Instrumentation$ActivityResult; (light greylist, linking)
+11-14 07:48:14.002  4003  4003 W biks.imgurshar: Accessing hidden method Landroid/app/Instrumentation;->execStartActivity(Landroid/content/Context;Landroid/os/IBinder;Landroid/os/IBinder;Ljava/lang/String;Landroid/content/Intent;ILandroid/os/Bundle;)Landroid/app/Instrumentation$ActivityResult; (light greylist, linking)
+11-14 07:48:14.003  4003  4003 I AndroidJUnitRunner: newApplication com.twtrubiks.imgurshare.ImgurShareApplication
+11-14 07:48:14.007  4003  4003 W biks.imgurshar: Accessing hidden field Landroid/os/Trace;->TRACE_TAG_APP:J (light greylist, reflection)
+11-14 07:48:14.007  4003  4003 W biks.imgurshar: Accessing hidden method Landroid/os/Trace;->isTagEnabled(J)Z (light greylist, reflection)
+11-14 07:48:14.011  4003  4003 W biks.imgurshar: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setUseSessionTickets(Z)V (light greylist, reflection)
+11-14 07:48:14.011  4003  4003 W biks.imgurshar: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setHostname(Ljava/lang/String;)V (light greylist, reflection)
+11-14 07:48:14.011  4003  4003 W biks.imgurshar: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->getAlpnSelectedProtocol()[B (light greylist, reflection)
+11-14 07:48:14.011  4003  4003 W biks.imgurshar: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setAlpnProtocols([B)V (light greylist, reflection)
+11-14 07:48:14.032  4003  4003 D WM-WrkMgrInitializer: Initializing WorkManager with default configuration.
+11-14 07:48:14.048  1731  1733 D hwcomposer: hw_composer sent 126 syncs in 61s
+11-14 07:48:14.059  4003  4003 D WM-Schedulers: Created SystemJobScheduler and enabled SystemJobService
+11-14 07:48:14.061  4003  4019 D WM-ForceStopRunnable: The default process name was not specified.
+11-14 07:48:14.062  4003  4019 D WM-ForceStopRunnable: Performing cleanup operations.
+11-14 07:48:14.066  4003  4003 I AndroidJUnitRunner: onCreate Bundle[mParcelledData.dataSize=108]
+11-14 07:48:14.066  4003  4003 D AndroidJUnitRunner: Use the raw file system for managing file I/O.
+11-14 07:48:14.069  4003  4003 V TestEventClient: No service name argument was given (testDiscoveryService, testRunEventService or orchestratorService)
+11-14 07:48:14.070  4003  4021 D AndroidJUnitRunner: onStart is called.
+11-14 07:48:14.086  4003  4021 I TestRunner: run started: 10 tests
+11-14 07:48:14.087  4003  4021 I TestRunner: started: landscapeWithoutExif(com.twtrubiks.imgurshare.ThumbnailsTest)
+11-14 07:48:14.092  4003  4021 D OpenGLRenderer: Skia GL Pipeline
+11-14 07:48:14.178  4003  4021 I ThumbnailsTest: landscape：原圖 76266 bytes，產生縮圖 11 ms
+11-14 07:48:14.182  4003  4021 I TestRunner: finished: landscapeWithoutExif(com.twtrubiks.imgurshare.ThumbnailsTest)
+11-14 07:48:14.183  4003  4021 I TestRunner: started: transverse(com.twtrubiks.imgurshare.ThumbnailsTest)
+11-14 07:48:14.259  4003  4021 I ThumbnailsTest: transverse：原圖 76374 bytes，產生縮圖 7 ms
+11-14 07:48:14.262  4003  4021 I TestRunner: finished: transverse(com.twtrubiks.imgurshare.ThumbnailsTest)
+11-14 07:48:14.263  4003  4021 I TestRunner: started: flipHorizontal(com.twtrubiks.imgurshare.ThumbnailsTest)
+11-14 07:48:14.336  4003  4021 I ThumbnailsTest: flipH：原圖 76374 bytes，產生縮圖 5 ms
+11-14 07:48:14.338  4003  4021 I TestRunner: finished: flipHorizontal(com.twtrubiks.imgurshare.ThumbnailsTest)
+11-14 07:48:14.340  4003  4021 I TestRunner: started: rotate180(com.twtrubiks.imgurshare.ThumbnailsTest)
+11-14 07:48:14.412  4003  4021 I ThumbnailsTest: rotate180：原圖 76374 bytes，產生縮圖 6 ms
+11-14 07:48:14.415  4003  4021 I TestRunner: finished: rotate180(com.twtrubiks.imgurshare.ThumbnailsTest)
+11-14 07:48:14.416  4003  4021 I TestRunner: started: rotate270(com.twtrubiks.imgurshare.ThumbnailsTest)
+11-14 07:48:14.489  4003  4021 I ThumbnailsTest: rotate270：原圖 76374 bytes，產生縮圖 7 ms
+11-14 07:48:14.491  4003  4021 I TestRunner: finished: rotate270(com.twtrubiks.imgurshare.ThumbnailsTest)
+11-14 07:48:14.493  4003  4021 I TestRunner: started: portraitPixelsWithoutExif(com.twtrubiks.imgurshare.ThumbnailsTest)
+11-14 07:48:14.565  4003  4021 I ThumbnailsTest: portrait：原圖 77488 bytes，產生縮圖 5 ms
+11-14 07:48:14.568  4003  4021 I TestRunner: finished: portraitPixelsWithoutExif(com.twtrubiks.imgurshare.ThumbnailsTest)
+11-14 07:48:14.569  4003  4021 I TestRunner: started: rotate90(com.twtrubiks.imgurshare.ThumbnailsTest)
+11-14 07:48:14.640  4003  4021 I ThumbnailsTest: rotate90：原圖 76374 bytes，產生縮圖 6 ms
+11-14 07:48:14.643  4003  4021 I TestRunner: finished: rotate90(com.twtrubiks.imgurshare.ThumbnailsTest)
+11-14 07:48:14.644  4003  4021 I TestRunner: started: png(com.twtrubiks.imgurshare.ThumbnailsTest)
+11-14 07:48:14.699  4003  4021 I ThumbnailsTest: png：原圖 9448 bytes，產生縮圖 11 ms
+11-14 07:48:14.702  4003  4021 I TestRunner: finished: png(com.twtrubiks.imgurshare.ThumbnailsTest)
+11-14 07:48:14.703  4003  4021 I TestRunner: started: transpose(com.twtrubiks.imgurshare.ThumbnailsTest)
+11-14 07:48:14.768  1942  3031 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@6b48e00)
+11-14 07:48:14.768  1942  1956 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@6b48e00)
+11-14 07:48:14.773  4003  4021 I ThumbnailsTest: transpose：原圖 76374 bytes，產生縮圖 6 ms
+11-14 07:48:14.776  4003  4021 I TestRunner: finished: transpose(com.twtrubiks.imgurshare.ThumbnailsTest)
+11-14 07:48:14.777  4003  4021 I TestRunner: started: flipVertical(com.twtrubiks.imgurshare.ThumbnailsTest)
+11-14 07:48:14.847  4003  4021 I ThumbnailsTest: flipV：原圖 76374 bytes，產生縮圖 6 ms
+11-14 07:48:14.850  4003  4021 I TestRunner: finished: flipVertical(com.twtrubiks.imgurshare.ThumbnailsTest)
+11-14 07:48:14.851  4003  4021 I TestRunner: run finished: 10 tests, 0 failed, 0 ignored
+11-14 07:48:14.853  1942  2627 I ActivityManager: Force stopping com.twtrubiks.imgurshare appid=10067 user=0: finished inst
+11-14 07:48:14.853  1942  3970 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-14 07:48:14.853  1942  3970 W Binder  : java.lang.Throwable
+11-14 07:48:14.853  1942  3970 W Binder  : 	at android.os.BinderProxy.transact(Binder.java:1114)
+11-14 07:48:14.853  1942  3970 W Binder  : 	at android.app.IInstrumentationWatcher$Stub$Proxy.instrumentationFinished(IInstrumentationWatcher.java:164)
+11-14 07:48:14.853  1942  3970 W Binder  : 	at com.android.server.am.InstrumentationReporter$MyThread.run(InstrumentationReporter.java:86)
+11-14 07:48:14.853  1942  2627 I ActivityManager: Killing 4003:com.twtrubiks.imgurshare/u0a67 (adj 0): stop com.twtrubiks.imgurshare
+11-14 07:48:14.853  1942  1960 W libprocessgroup: kill(-4003, 9) failed: No such process
+11-14 07:48:14.854  3993  3993 D AndroidRuntime: Shutting down VM

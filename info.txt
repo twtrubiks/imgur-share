@@ -1,0 +1,5 @@
+branch: main
+commit: 4723bfccd3add701850d17ac3ac92b43d2b59d35
+api level: 28
+run: https://github.com/twtrubiks/imgur-share/actions/runs/43572254885
+job status: success

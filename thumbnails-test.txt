@@ -1,0 +1,8 @@
+
+com.twtrubiks.imgurshare.ThumbnailsTest:..........
+
+Time: 0.765
+
+OK (10 tests)
+
+

@@ -1,0 +1,7 @@
+Starting: Intent { cmp=com.twtrubiks.imgurshare/.MainActivity }
+Status: ok
+Activity: com.twtrubiks.imgurshare/.MainActivity
+ThisTime: 1219
+TotalTime: 7300
+WaitTime: 1269
+Complete

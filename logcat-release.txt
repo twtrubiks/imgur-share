@@ -1,0 +1,90 @@
+--------- beginning of main
+11-14 07:48:15.390  3389  3872 D ProvidersAccess: Matched roots: [Root{authority=null, rootId=null, title=Recent, isUsb=false, isSd=false, isMtp=false} @ content:/root/null, Root{authority=com.android.providers.downloads.documents, rootId=downloads, title=Downloads, isUsb=false, isSd=false, isMtp=false} @ content://com.android.providers.downloads.documents/root/downloads, Root{authority=com.android.providers.media.documents, rootId=images_root, title=Images, isUsb=false, isSd=false, isMtp=false} @ content://com.android.providers.media.documents/root/images_root, Root{authority=com.android.providers.media.documents, rootId=videos_root, title=Videos, isUsb=false, isSd=false, isMtp=false} @ content://com.android.providers.media.documents/root/videos_root, Root{authority=com.android.providers.media.documents, rootId=audio_root, title=Audio, isUsb=false, isSd=false, isMtp=false} @ content://com.android.providers.media.documents/root/audio_root, Root{authority=com.android.externalstorage.documents, rootId=home, title=Documents, isUsb=false, isSd=false, isMtp=false} @ content://com.android.externalstorage.documents/root/home]
+--------- beginning of system
+11-14 07:48:15.390  1942  1958 D AutofillUI: destroySaveUiUiThread(): already destroyed
+11-14 07:48:15.390  1942  1956 D AutofillManagerServiceImpl: Reset component for user 0 ()
+11-14 07:48:15.390  1942  1956 D FieldClassificationStrategy: reset(): service is not bound. Do nothing.
+11-14 07:48:15.390  1942  1956 W VoiceInteractionManagerService: no available voice recognition services found for user 0
+11-14 07:48:15.393  1942  3594 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.twtrubiks.imgurshare flg=0x4000010 (has extras) } to com.android.musicfx/.Compatibility$Receiver
+11-14 07:48:15.402  1942  1957 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_REPLACED dat=package:com.twtrubiks.imgurshare flg=0x4000010 (has extras) } to com.android.musicfx/.Compatibility$Receiver
+11-14 07:48:15.403  1942  2016 I InputReader: Reconfiguring input devices.  changes=0x00000010
+11-14 07:48:15.403  2157  2157 D CarrierConfigLoader: mHandler: 9 phoneId: 0
+11-14 07:48:15.417  1942  3594 I ActivityManager: START u0 {flg=0x10000000 cmp=com.twtrubiks.imgurshare/.MainActivity} from uid 2000
+11-14 07:48:15.473  1942  1959 I ActivityManager: Start proc 4046:com.twtrubiks.imgurshare/u0a67 for activity com.twtrubiks.imgurshare/.MainActivity
+11-14 07:48:15.473  4046  4046 W biks.imgurshar: Unexpected CPU variant for X86 using defaults: x86_64
+11-14 07:48:15.513  1564  1564 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 17973248
+11-14 07:48:15.521  4046  4046 D WM-WrkMgrInitializer: Initializing WorkManager with default configuration.
+11-14 07:48:15.533  4046  4046 D WM-Schedulers: Created SystemJobScheduler and enabled SystemJobService
+11-14 07:48:15.536  4046  4063 D WM-ForceStopRunnable: The default process name was not specified.
+11-14 07:48:15.536  4046  4063 D WM-ForceStopRunnable: Performing cleanup operations.
+11-14 07:48:15.596  4046  4046 D OpenGLRenderer: Skia GL Pipeline
+11-14 07:48:15.597  1895  1898 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+11-14 07:48:15.644  4046  4046 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+11-14 07:48:15.690  4046  4046 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->getScaleX()F (dark greylist, linking)
+11-14 07:48:15.690  4046  4046 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setScaleY(F)Z (dark greylist, linking)
+11-14 07:48:15.690  4046  4046 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->getMatrix(Landroid/graphics/Matrix;)V (dark greylist, linking)
+11-14 07:48:15.690  4046  4046 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setPivotX(F)Z (dark greylist, linking)
+11-14 07:48:15.690  4046  4046 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setLayerPaint(Landroid/graphics/Paint;)Z (dark greylist, linking)
+11-14 07:48:15.690  4046  4046 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setCameraDistance(F)Z (dark greylist, linking)
+11-14 07:48:15.690  4046  4046 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setRotationX(F)Z (dark greylist, linking)
+11-14 07:48:15.690  4046  4046 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setClipToOutline(Z)Z (dark greylist, linking)
+11-14 07:48:15.690  4046  4046 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setClipToOutline(Z)Z (dark greylist, linking)
+11-14 07:48:15.690  4046  4046 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setLayerType(I)Z (dark greylist, linking)
+11-14 07:48:15.690  4046  4046 I chatty  : uid=10067(com.twtrubiks.imgurshare) identical 1 line
+11-14 07:48:15.690  4046  4046 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setLayerType(I)Z (dark greylist, linking)
+11-14 07:48:15.690  4046  4046 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setPivotX(F)Z (dark greylist, linking)
+11-14 07:48:15.690  4046  4046 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setPivotX(F)Z (dark greylist, linking)
+11-14 07:48:15.690  4046  4046 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setRotationY(F)Z (dark greylist, linking)
+11-14 07:48:15.690  4046  4046 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setAlpha(F)Z (dark greylist, linking)
+11-14 07:48:15.690  4046  4046 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setElevation(F)Z (dark greylist, linking)
+11-14 07:48:15.690  4046  4046 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setRotation(F)Z (dark greylist, linking)
+11-14 07:48:15.690  4046  4046 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setTranslationY(F)Z (dark greylist, linking)
+11-14 07:48:15.690  4046  4046 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setOutline(Landroid/graphics/Outline;)Z (dark greylist, linking)
+11-14 07:48:15.690  4046  4046 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setScaleX(F)Z (dark greylist, linking)
+11-14 07:48:15.691  4046  4046 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->setTranslationX(F)Z (dark greylist, linking)
+11-14 07:48:15.691  4046  4046 W biks.imgurshar: Accessing hidden method Landroid/view/RenderNode;->getScaleX()F (dark greylist, linking)
+11-14 07:48:15.718  1564  1564 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 17973248
+11-14 07:48:15.770  1942  3031 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@e749d54)
+11-14 07:48:15.770  1942  1956 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@e749d54)
+11-14 07:48:15.798  2077  2291 D EGL_emulation: eglMakeCurrent: 0x78afa60123c0: ver 3 0 (tinfo 0x78afbe1fea20)
+11-14 07:48:15.801  4046  4065 D         : HostConnection::get() New Host Connection established 0x78afbe1c0f60, tid 4065
+11-14 07:48:15.801  1564  1564 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 17973248
+11-14 07:48:15.802  1564  1608 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 17973248
+11-14 07:48:15.825  1564  1564 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 17973248
+11-14 07:48:15.825  1564  1608 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 17973248
+11-14 07:48:15.857  4046  4065 I ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasWideColorDisplay retrieved: 0
+11-14 07:48:15.859  4046  4065 I ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasHDRDisplay retrieved: 0
+11-14 07:48:15.859  4046  4065 I OpenGLRenderer: Initialized EGL, version 1.4
+11-14 07:48:15.859  4046  4065 D OpenGLRenderer: Swap behavior 1
+11-14 07:48:15.869  2077  2291 D EGL_emulation: eglMakeCurrent: 0x78afa60123c0: ver 3 0 (tinfo 0x78afbe1fea20)
+11-14 07:48:15.878  4046  4065 D EGL_emulation: eglCreateContext: 0x78afb611d220: maj 3 min 0 rcv 3
+11-14 07:48:15.880  4046  4065 D EGL_emulation: eglMakeCurrent: 0x78afb611d220: ver 3 0 (tinfo 0x78afb602f9a0)
+11-14 07:48:15.946  1895  2311 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+11-14 07:48:16.152  4046  4065 D EGL_emulation: eglMakeCurrent: 0x78afb611d220: ver 3 0 (tinfo 0x78afb602f9a0)
+11-14 07:48:16.389  2077  2291 D EGL_emulation: eglMakeCurrent: 0x78afa60123c0: ver 3 0 (tinfo 0x78afbe1fea20)
+11-14 07:48:16.393  3389  3428 D EGL_emulation: eglMakeCurrent: 0x78afb6240b40: ver 3 0 (tinfo 0x78afb620d680)
+11-14 07:48:16.401  2077  2291 D EGL_emulation: eglMakeCurrent: 0x78afa60123c0: ver 3 0 (tinfo 0x78afbe1fea20)
+11-14 07:48:16.679  4046  4065 I OpenGLRenderer: Davey! duration=1008ms; Flags=0, IntendedVsync=132726357524, Vsync=133193024172, OldestInputEvent=9223372036854775807, NewestInputEvent=0, HandleInputStart=133201182476, AnimationStart=133201195334, PerformTraversalsStart=133201195546, DrawStart=133201460429, SyncQueued=133209483982, SyncStart=133227728645, IssueDrawCommandsStart=133227770424, SwapBuffers=133656011020, FrameCompleted=133753221163, DequeueBufferDuration=2082000, QueueBufferDuration=209000, 
+11-14 07:48:16.686  1942  1967 I ActivityManager: Displayed com.twtrubiks.imgurshare/.MainActivity: +1s219ms (total +7s300ms)
+11-14 07:48:16.689  4046  4046 I Choreographer: Skipped 33 frames!  The application may be doing too much work on its main thread.
+11-14 07:48:16.772  1942  3031 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@a42c8bb)
+11-14 07:48:16.772  1942  1956 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@a42c8bb)
+11-14 07:48:16.863  1895  1898 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen com.twtrubiks.imgurshare#0
+11-14 07:48:16.863  1895  1898 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen com.twtrubiks.imgurshare#0
+11-14 07:48:17.000  2077  2291 D EGL_emulation: eglMakeCurrent: 0x78afa60123c0: ver 3 0 (tinfo 0x78afbe1fea20)
+11-14 07:48:17.044  2077  2291 I chatty  : uid=10013(com.android.systemui) RenderThread identical 2 lines
+11-14 07:48:17.069  2077  2291 D EGL_emulation: eglMakeCurrent: 0x78afa60123c0: ver 3 0 (tinfo 0x78afbe1fea20)
+11-14 07:48:17.771  1942  3031 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@256e931)
+11-14 07:48:17.771  1942  1956 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@256e931)
+11-14 07:48:17.901  1942  2518 V BackupManagerConstants: getFullBackupRequiredNetworkType(...) returns 2
+11-14 07:48:17.901  1942  2518 V BackupManagerConstants: getFullBackupRequireCharging(...) returns true
+11-14 07:48:17.951  1711  1792 E storaged: getDiskStats failed with result NOT_SUPPORTED and size 0
+11-14 07:48:18.771  1942  3031 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@4cb3597)
+11-14 07:48:18.771  1942  1956 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@4cb3597)
+11-14 07:48:19.640  1942  3594 E memtrack: Couldn't load memtrack module
+11-14 07:48:19.640  1942  3594 W android.os.Debug: failed to get memory consumption info: -1
+11-14 07:48:19.732  1895  2014 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+11-14 07:48:19.732  1564  1564 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 17973248
+11-14 07:48:19.752  4071  4071 D         : HostConnection::get() New Host Connection established 0x75332642ee40, tid 4071
+11-14 07:48:19.771  1942  3031 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@ea40384)
+11-14 07:48:19.771  1942  1956 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@ea40384)
