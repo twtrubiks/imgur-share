@@ -3,9 +3,15 @@ name: Release
 # push v* tag（例如 v1.2.3）時，用固定的發布金鑰打包 release APK，建立 GitHub Release。
 # 每一版的簽章都一樣，手機上可以直接覆蓋更新，上傳紀錄不會掉。
 # release notes 取自 tag 的訊息：git tag -a v1.2.3 -m "說明" && git push origin v1.2.3
+#
+# 手動觸發（workflow_dispatch）是給測試用的：一樣用發布金鑰打包，但不建立 Release，APK 放在 Actions artifact。
+# versionCode 沿用最新的 v* tag，可以覆蓋手機上的正式版，下一個正式版也能再覆蓋它；
+# versionName 是 <最新版>-test.<commit>。
+#   gh api -X POST 'repos/{owner}/{repo}/actions/workflows/release.yml/dispatches' -f ref=<branch>
 on:
   push:
     tags: ['v*']
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -21,6 +27,7 @@ jobs:
       - uses: actions/checkout@v7
 
       - name: Parse version
+        if: github.event_name == 'push'
         run: |
           if [[ ! "$GITHUB_REF_NAME" =~ ^v([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
             echo "::error::tag 要是 v<major>.<minor>.<patch>，例如 v1.2.3"
@@ -32,6 +39,19 @@ jobs:
             exit 1
           fi
           echo "VERSION_NAME=${GITHUB_REF_NAME#v}" >> "$GITHUB_ENV"
+          echo "VERSION_CODE=$(( 10#$major * 10000 + 10#$minor * 100 + 10#$patch ))" >> "$GITHUB_ENV"
+
+      - name: Parse version (test build)
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          git fetch -q --tags origin
+          latest=$(git tag -l 'v*' --sort=-v:refname | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | head -1)
+          if [[ ! "$latest" =~ ^v([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
+            echo "::error::找不到 v<major>.<minor>.<patch> 的 tag"
+            exit 1
+          fi
+          major=${BASH_REMATCH[1]} minor=${BASH_REMATCH[2]} patch=${BASH_REMATCH[3]}
+          echo "VERSION_NAME=${latest#v}-test.${GITHUB_SHA::7}" >> "$GITHUB_ENV"
           echo "VERSION_CODE=$(( 10#$major * 10000 + 10#$minor * 100 + 10#$patch ))" >> "$GITHUB_ENV"
 
       - uses: actions/setup-java@v6
@@ -63,6 +83,7 @@ jobs:
           fi
 
       - name: Create release
+        if: github.event_name == 'push'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -73,3 +94,17 @@ jobs:
           cp app/build/outputs/apk/release/app-release.apk imgur-share.apk
           gh release create "$GITHUB_REF_NAME" imgur-share.apk \
             --title "$GITHUB_REF_NAME" --notes-file notes.md --verify-tag
+
+      - name: Prepare test APK
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          mkdir -p test-apk
+          cp app/build/outputs/apk/release/app-release.apk "test-apk/imgur-share-${VERSION_NAME}.apk"
+          echo "versionName ${VERSION_NAME}, versionCode ${VERSION_CODE}" | tee test-apk/version.txt
+
+      - uses: actions/upload-artifact@v7
+        if: github.event_name == 'workflow_dispatch'
+        with:
+          name: imgur-share-test-apk
+          path: test-apk
+          retention-days: 7

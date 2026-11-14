@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# 在模擬器上一邊錄影一邊跑 DemoRecordingTest。
-# 輸出到 $1（預設 out/）：demo.raw.mp4、instrument.txt、logcat.txt、screenshots/，
+# 在模擬器上一邊錄影一邊跑 DemoRecordingTest，錄完再跑 ThumbnailsTest（不錄影）。
+# 輸出到 $1（預設 out/）：demo.raw.mp4、instrument.txt、logcat.txt、thumbnails-test.txt、logcat-thumbnails.txt、screenshots/，
 # 以及 release 版冒煙測試的 release-smoke.txt、logcat-release.txt、screenshots/release-*.png
 # 由 .github/workflows/android-record.yml 在 android-emulator-runner 裡呼叫，工作目錄是 repo 根目錄。
 set -uo pipefail
@@ -57,14 +57,26 @@ wait "$REC_PID" || true
 sleep 2
 
 adb pull /sdcard/demo.mp4 "$OUT/demo.raw.mp4" || true
-# DemoRecordingTest 在關鍵畫面存的截圖
-adb pull "/sdcard/Android/data/$APP_ID/files/screenshots" "$OUT/" || true
 adb logcat -d > "$OUT/logcat.txt" || true
+
+# 縮圖測試：用和手機相機照片一樣的大圖（4032x3024、EXIF 旋轉）產生縮圖，不錄影。
+# 產生的縮圖存在 screenshots/thumb-*.png
+adb logcat -c || true
+adb shell am instrument -w -e class "$APP_ID.ThumbnailsTest" \
+  "$APP_ID.test/androidx.test.runner.AndroidJUnitRunner" | tee "$OUT/thumbnails-test.txt"
+adb logcat -d > "$OUT/logcat-thumbnails.txt" || true
+
+# DemoRecordingTest 在關鍵畫面存的截圖，以及 ThumbnailsTest 的縮圖
+adb pull "/sdcard/Android/data/$APP_ID/files/screenshots" "$OUT/" || true
 
 status=0
 # 測試失敗時 am instrument 的 exit code 仍是 0，要看輸出判斷
 if ! grep -q '^OK (' "$OUT/instrument.txt"; then
   echo "DemoRecordingTest 沒有通過，詳見 $OUT/instrument.txt 與 $OUT/logcat.txt"
+  status=1
+fi
+if ! grep -q '^OK (' "$OUT/thumbnails-test.txt"; then
+  echo "ThumbnailsTest 沒有通過，詳見 $OUT/thumbnails-test.txt 與 $OUT/logcat-thumbnails.txt"
   status=1
 fi
 

@@ -18,7 +18,9 @@
   Android 13 起系統複製時會自己顯示提示，App 不再重複顯示
 - **上傳紀錄**：連結、`deletehash`、上傳時間存在 Room，可以從紀錄裡刪除 imgur 上的圖；
   imgur 刪不掉時（例如圖已經被清掉）讓使用者選擇只移除紀錄。
-  縮圖存在 `noBackupFilesDir/thumbs/`：不佔 Auto Backup 的 25 MB 額度（超過額度整個備份會失敗），還原後沒有縮圖就顯示空白
+  縮圖存在 `noBackupFilesDir/thumbs/`：不佔 Auto Backup 的 25 MB 額度（超過額度整個備份會失敗），還原後沒有縮圖就顯示空白。
+  縮圖用 `BitmapFactory` 縮小解碼、再依 EXIF Orientation 自己轉，**不要**改回 `ImageDecoder`：
+  Android 9 上 EXIF 轉 90°/270° 的圖（手機直拍的照片幾乎都是）加 `setTargetSize` 會丟 `invalid scale`
 - **設定**：Client-ID、檢查額度（`GET /3/credits`）、自動複製開關。
   Client-ID 輸入框（`ui/ClientIdField.kt`）預設隱藏，用眼睛按鈕切換顯示，避免截圖、分享螢幕時外流；
   鍵盤用密碼類型，輸入法不會把它學進字典或出現在建議字裡
@@ -83,6 +85,10 @@ schema 輸出在 `app/schemas/`，要 commit。改資料表一定要升版本並
   versionName 取自 tag，versionCode = major * 10000 + minor * 100 + patch，新的 tag 一定要比上一版大，不然手機不能覆蓋更新
 - 使用者要 APK 時請他從 GitHub Release 下載，VM 打包的 APK 是 debug 金鑰簽的，不要給使用者裝。
   雲端 session 不能建立或編輯 Release（proxy 回 403），push tag 被擋時把 tag 指令交給使用者執行
+- 還沒要發布、只想先在手機上測試時，手動觸發 Release workflow：用發布金鑰打包但不建立 Release，
+  APK 放在 Actions artifact `imgur-share-test-apk`（versionCode 沿用最新 tag，versionName 是 `<最新版>-test.<commit>`），
+  下載後用 SendUserFile 傳給使用者：
+  `gh api -X POST 'repos/{owner}/{repo}/actions/workflows/release.yml/dispatches' -f ref=<branch>`
 - README 的展示 GIF 和截圖在 `docs/images/`，完整影片在 `docs/demo.mp4`（GitHub README 不能播放 repo 裡的 mp4，只能放連結）。
   畫面改版後從 `android-media` 重新產生，GIF 跳過開頭的桌面、2 倍速：
   `ffmpeg -ss 9.5 -i demo.mp4 -vf "setpts=PTS/2,fps=8,scale=300:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=128:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle" -loop 0 demo.gif`
@@ -91,7 +97,7 @@ schema 輸出在 `app/schemas/`，要 commit。改資料表一定要升版本並
   Compose BOM 2026.09.00、activity-compose 1.13.0、core-ktx 1.19.1、lifecycle-runtime-ktx 2.11.0、
   androidx.test runner 1.7.0、core 1.7.0、ext:junit 1.3.0、uiautomator 2.4.0。
   功能依賴（2026-10 查的）：KSP 2.3.12、Room 3.0.3（`androidx.room3`）、sqlite-framework 2.7.1、WorkManager 2.12.0、
-  DataStore 1.3.0、lifecycle-viewmodel-compose / runtime-compose 2.11.0、OkHttp / mockwebserver3 5.5.1、
+  DataStore 1.3.0、exifinterface 1.4.2（2026-11 查的）、lifecycle-viewmodel-compose / runtime-compose 2.11.0、OkHttp / mockwebserver3 5.5.1、
   kotlinx-serialization-json 1.12.0（只用 `JsonElement`，不需要 serialization plugin）、kotlinx-coroutines-test 1.11.0。
   若 build 報版本相容問題，以錯誤訊息為準調整，並更新這段
 
@@ -113,8 +119,8 @@ schema 輸出在 `app/schemas/`，要 commit。改資料表一定要升版本並
 
 ## 錄影測試：DemoRecordingTest
 
-`app/src/androidTest/java/com/twtrubiks/imgurshare/DemoRecordingTest.kt`，CI 只跑這個 class，
-`record.sh` 在它執行期間用 `screenrecord` 錄整個螢幕。
+`app/src/androidTest/java/com/twtrubiks/imgurshare/DemoRecordingTest.kt`，
+`record.sh` 在它執行期間用 `screenrecord` 錄整個螢幕。錄完再跑 `ThumbnailsTest`（不錄影），CI 只跑這兩個 class。
 
 - 用 UiAutomator 操作（真實時間驅動，動畫會正常播放），不要用 Compose test rule
 - 一個 `@Test` 跑完整的展示流程，每個操作之間停 1～1.5 秒讓影片看得清楚
@@ -129,6 +135,9 @@ schema 輸出在 `app/schemas/`，要 commit。改資料表一定要升版本並
 - 展示用的圖由測試自己畫，寫到 App 的外部資料夾後用 shell 複製到 `/sdcard/Pictures/ImgurShareDemo/` 再請媒體掃描
   （App 沒有儲存權限）。相簿選取和「檔案」App 的分享都在 DocumentsUI（`com.android.documentsui`）裡操作：
   側邊欄 → Images → ImgurShareDemo，長按第一張進入多選
+
+`ThumbnailsTest` 用和手機相機照片一樣的圖（4032x3024，直拍時像素是橫的、靠 EXIF Orientation 轉正）
+測 8 種 Orientation 和 PNG 截圖，檢查縮圖的尺寸和四個角的顏色有沒有轉對。展示用的小正方形圖測不到這些情況
 
 ## 錄影流程（GitHub Actions）
 
@@ -152,12 +161,13 @@ schema 輸出在 `app/schemas/`，要 commit。改資料表一定要升版本並
    ```
 
    - `/tmp/media/frames/*.png`：每 2 秒一張影格，用 Read 看圖確認畫面
-   - `/tmp/media/screenshots/*.png`：測試在關鍵畫面存的截圖（半解析度）
+   - `/tmp/media/screenshots/*.png`：測試在關鍵畫面存的截圖（半解析度）；`thumb-*.png` 是 `ThumbnailsTest` 產生的縮圖
    - `/tmp/media/screenshots/release-*.png`：錄影結束後覆蓋安裝 release 版拍的截圖；
      `release-smoke.txt` 是啟動時間，`logcat-release.txt` 有 `FATAL EXCEPTION` 時 job 會失敗
    - `/tmp/media/info.txt`：branch、commit、api level、run 網址、job status
    - `/tmp/media/gradle-build.txt`：CI 的 Gradle build 輸出
    - `/tmp/media/instrument.txt`、`logcat.txt`：測試輸出與 log
+   - `/tmp/media/thumbnails-test.txt`、`logcat-thumbnails.txt`：`ThumbnailsTest` 的輸出與 log
    - `/tmp/media/demo.mp4`：壓縮後的影片（給使用者看）
 
 看完 frames 確認畫面正常後，把 `/tmp/media/demo.mp4` 複製到 session 的 scratchpad 目錄，

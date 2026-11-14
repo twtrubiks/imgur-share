@@ -35,7 +35,7 @@ import java.util.regex.Pattern
 
 /**
  * 錄影用的展示流程：輸入 Client-ID → 從相簿選 3 張上傳 → 從「檔案」App 分享 2 張進來 → 刪除一張 → 設定頁。
- * CI 只跑這個 class，`scripts/ci/record.sh` 會在執行期間錄下整個螢幕。
+ * `scripts/ci/record.sh` 會在執行期間錄下整個螢幕。
  *
  * CI 沒有 Client-ID，錄影結果也是公開的，所以 imgur 換成 MockWebServer，Client-ID 用假的，
  * 展示用的圖是測試自己畫的。
